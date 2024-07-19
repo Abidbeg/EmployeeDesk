@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id ("kotlin-kapt")
     id ("com.google.dagger.hilt.android")
+    id ("com.google.devtools.ksp")
 }
 
 android {
@@ -78,4 +79,9 @@ dependencies {
     kapt ("com.google.dagger:hilt-android-compiler:2.51.1")
 
     implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    //==================== Database ====================
+    implementation ("androidx.room:room-runtime:2.6.1")
+    ksp ("androidx.room:room-compiler:2.6.1")
+    implementation ("androidx.room:room-ktx:2.6.1")
 }
