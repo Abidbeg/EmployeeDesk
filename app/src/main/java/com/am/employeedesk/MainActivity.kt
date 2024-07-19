@@ -11,17 +11,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.am.employeedesk.ui.components.DetailsScreen
+import com.am.employeedesk.ui.components.NoNetwork
+import com.am.employeedesk.ui.components.UserScreen
 import com.am.employeedesk.ui.theme.EmployeeDeskTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             EmployeeDeskTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    UserScreen(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -30,18 +33,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    EmployeeDeskTheme {
-        Greeting("Android")
-    }
-}
