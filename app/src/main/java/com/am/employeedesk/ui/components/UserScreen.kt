@@ -15,24 +15,34 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.am.employeedesk.R
+import com.am.employeedesk.domain.Employee
 import com.am.employeedesk.model.EmployeeList
 import com.am.employeedesk.viewmodel.EmployeeViewModel
 
 @Composable
 fun UserScreen(modifier: Modifier = Modifier) {
-    val employeeViewModel: EmployeeViewModel = hiltViewModel()
-    val employeeList = employeeViewModel.empList.collectAsState()
+//    val employeeViewModel: EmployeeViewModel = hiltViewModel()
+//    val employeeList = employeeViewModel.empList.collectAsState()
 
-    LazyColumn {
-        items(employeeList.value) { item ->
-            UserListItem(item)
+    val viewModel = hiltViewModel<EmployeeViewModel>()
+    val uiState = viewModel.empList
+
+    if (uiState.offline) {
+        NoNetwork()
+    } else {
+        LazyColumn {
+            items(uiState.list) { item ->
+                UserListItem(item)
+            }
+
         }
-
     }
+
+
 }
 
 @Composable
-fun UserListItem(employeeList: EmployeeList, modifier: Modifier=Modifier) {
+fun UserListItem(item: Employee, modifier: Modifier = Modifier) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Image(
             modifier = modifier
@@ -41,6 +51,6 @@ fun UserListItem(employeeList: EmployeeList, modifier: Modifier=Modifier) {
             painter = painterResource(id = R.drawable.network_check),
             contentDescription = "userImage"
         )
-        Text(text = employeeList.login)
+        Text(text = item.username)
     }
 }

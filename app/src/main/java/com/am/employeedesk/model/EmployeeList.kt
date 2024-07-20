@@ -1,6 +1,7 @@
 package com.am.employeedesk.model
 
 
+import com.am.employeedesk.database.EmployeeEntity
 import com.google.gson.annotations.SerializedName
 
 data class EmployeeList(
@@ -41,3 +42,9 @@ data class EmployeeList(
     @SerializedName("url")
     val url: String
 )
+
+fun List<EmployeeList>.asDatabaseModel(): List<EmployeeEntity> {
+    return map {
+        EmployeeEntity(id = it.id, avtar = it.avatarUrl, userName = it.login)
+    }
+}
