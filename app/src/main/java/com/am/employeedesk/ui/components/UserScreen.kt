@@ -1,6 +1,7 @@
 package com.am.employeedesk.ui.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -21,7 +22,7 @@ import com.am.employeedesk.model.EmployeeList
 import com.am.employeedesk.viewmodel.EmployeeViewModel
 
 @Composable
-fun UserScreen(modifier: Modifier = Modifier) {
+fun UserScreen(modifier: Modifier = Modifier, onUserClick: (String) -> Unit) {
 //    val employeeViewModel: EmployeeViewModel = hiltViewModel()
 //    val employeeList = employeeViewModel.empList.collectAsState()
 
@@ -33,7 +34,7 @@ fun UserScreen(modifier: Modifier = Modifier) {
     } else {
         LazyColumn {
             items(uiState.list) { item ->
-                UserListItem(item)
+                UserListItem(item, onUserClick = onUserClick)
             }
 
         }
@@ -43,8 +44,10 @@ fun UserScreen(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun UserListItem(item: Employee, modifier: Modifier = Modifier) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
+fun UserListItem(item: Employee, modifier: Modifier = Modifier, onUserClick: (String) -> Unit) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.clickable { onUserClick(item.username) }) {
         AsyncImage(
             modifier = modifier
                 .size(80.dp)

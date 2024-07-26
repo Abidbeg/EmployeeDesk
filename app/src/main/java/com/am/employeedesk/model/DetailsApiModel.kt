@@ -1,5 +1,6 @@
 package com.am.employeedesk.model
 
+import com.am.employeedesk.database.EmployeeDetails
 import com.google.gson.annotations.SerializedName
 
 data class DetailsApiModel(
@@ -68,3 +69,10 @@ data class DetailsApiModel(
     @SerializedName("url")
     val url: String? = null
 )
+
+
+fun DetailsApiModel.asDatabaseModel(): EmployeeDetails {
+    return EmployeeDetails(
+        login, avatarUrl, name ?: "", createdAt ?: "", location ?: ""
+    )
+}

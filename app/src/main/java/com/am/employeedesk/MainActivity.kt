@@ -17,11 +17,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             EmployeeDeskTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    UserScreen(
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                ComposeApp()
+
             }
         }
     }

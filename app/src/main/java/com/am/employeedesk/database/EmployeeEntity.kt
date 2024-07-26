@@ -2,6 +2,7 @@ package com.am.employeedesk.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.am.employeedesk.domain.Details
 import com.am.employeedesk.domain.Employee
 
 @Entity
@@ -28,8 +29,8 @@ data class EmployeeDetails constructor(
     val location: String
 )
 
-fun EmployeeDetails.asDomainModel(): EmployeeDetails {
-    return EmployeeDetails(
+fun EmployeeDetails.asDomainModel(): Details {
+    return Details(
         user,
         name,
         avtar,

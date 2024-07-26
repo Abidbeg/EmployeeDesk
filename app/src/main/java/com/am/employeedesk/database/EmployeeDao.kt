@@ -17,10 +17,19 @@ interface EmployeeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertEmployee(employee: List<EmployeeEntity>)
 
+    @Query("select * from employeedetails where user Like:user")
+    fun getDetails(user: String): Flow<EmployeeDetails?>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertDetails(employeeDetails: EmployeeDetails)
 }
 
 
-@Database(entities = [EmployeeEntity::class], version = 1, exportSchema = false)
+@Database(
+    entities = [EmployeeEntity::class, EmployeeDetails::class],
+    version = 2,
+    exportSchema = false
+)
 abstract class AppDataBase : RoomDatabase() {
     abstract val employeeDao: EmployeeDao
 }
