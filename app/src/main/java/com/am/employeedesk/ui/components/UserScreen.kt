@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.AsyncImage
 import com.am.employeedesk.R
 import com.am.employeedesk.domain.Employee
 import com.am.employeedesk.model.EmployeeList
@@ -44,11 +45,11 @@ fun UserScreen(modifier: Modifier = Modifier) {
 @Composable
 fun UserListItem(item: Employee, modifier: Modifier = Modifier) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        Image(
+        AsyncImage(
             modifier = modifier
                 .size(80.dp)
                 .padding(16.dp),
-            painter = painterResource(id = R.drawable.network_check),
+            model = item.avatar,
             contentDescription = "userImage"
         )
         Text(text = item.username)

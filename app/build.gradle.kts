@@ -87,4 +87,8 @@ dependencies {
 
     implementation ("com.jakewharton.timber:timber:5.0.1")
 
+
+    //==================== Image Loading ====================
+    implementation ("io.coil-kt:coil-compose:2.5.0")
+
 }

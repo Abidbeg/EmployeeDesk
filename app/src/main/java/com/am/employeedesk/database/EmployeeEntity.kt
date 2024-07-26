@@ -17,3 +17,23 @@ fun List<EmployeeEntity>.asDomainModel(): List<Employee> {
         Employee(id = it.id, avatar = it.avtar, username = it.userName)
     }
 }
+
+@Entity
+data class EmployeeDetails constructor(
+    @PrimaryKey
+    val user: String,
+    val name: String,
+    val avtar: String,
+    val userSince: String,
+    val location: String
+)
+
+fun EmployeeDetails.asDomainModel(): EmployeeDetails {
+    return EmployeeDetails(
+        user,
+        name,
+        avtar,
+        userSince,
+        location
+    )
+}
