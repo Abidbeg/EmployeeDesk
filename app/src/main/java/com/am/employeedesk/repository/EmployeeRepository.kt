@@ -25,13 +25,16 @@ class EmployeeRepository @Inject constructor(
 
     suspend fun getEmpList() {
         try {
-
-
             val response = employeeApi.getUser()
             appDataBase.employeeDao.insertEmployee(response.asDatabaseModel())
         } catch (e: Exception) {
             Timber.w(e)
         }
+    }
+
+    suspend fun getBackgroundEmpList() {
+        val response = employeeApi.getUser()
+        appDataBase.employeeDao.insertEmployee(response.asDatabaseModel())
     }
 
 }
