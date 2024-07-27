@@ -32,9 +32,6 @@ class EmployeeRepository @Inject constructor(
         }
     }
 
-    suspend fun getBackgroundEmpList() {
-        val response = employeeApi.getUser()
-        appDataBase.employeeDao.insertEmployee(response.asDatabaseModel())
-    }
+
 
 }

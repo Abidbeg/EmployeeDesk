@@ -28,4 +28,9 @@ class EmployeeDetailsRepository @Inject constructor(
         }
     }
 
+    suspend fun getBackgroundEmpDetails() {
+        val response = employeeApi.getDetails("passy")
+        dataBase.employeeDao.insertDetails(response.asDatabaseModel())
+    }
+
 }
