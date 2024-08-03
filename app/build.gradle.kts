@@ -101,6 +101,9 @@ dependencies {
 
     implementation ("com.google.firebase:firebase-messaging-ktx")
 
+    implementation("com.google.firebase:firebase-crashlytics-ndk")
+    implementation("com.google.firebase:firebase-analytics")
+
 
 
 }
