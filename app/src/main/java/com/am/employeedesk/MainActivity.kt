@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Firebase.messaging.isAutoInitEnabled = true
-
+//        val i = 100 / 0
         askNotificationPermission()
         Timber.e("NewToken", "${MyFirebaseMessagingService.getToken(this)}")
         setContent {
